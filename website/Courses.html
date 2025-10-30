@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Courses - Empowering The Nation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/coursesstyle.css">
+</head>
+<body>
+     
+  <nav>
+    <div class="brand">
+      <img src="Media1/Emplogo.png" alt="Logo">
+      <span>Empowering The Nation</span>
+    </div>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li class="dropdown">
+      <a href="Courses.html">Courses</a>
+      <ul class="dropdown-content">
+  <li class="sub-dropdown">
+    <a href="#">6 Weeks ▸</a>
+    <ul class="sub-dropdown-content">
+      <li><a href="detailed Courses.html#childminding" class="course-link">Childminding</a></li>
+      <li><a href="detailed Courses.html#cooking" class="course-link">Cooking</a></li>
+      <li><a href="detailed Courses.html#garden-maintenance" class="course-link">Garden Maintenance</a></li>
+    </ul>
+  </li>
+  <li class="sub-dropdown">
+    <a href="#">6 Months ▸</a>
+    <ul class="sub-dropdown-content">
+      <li><a href="detailed Courses.html#landscaping" class="course-link">Landscaping</a></li>
+      <li><a href="detailed Courses.html#first-aid" class="course-link">First Aid</a></li>
+      <li><a href="detailed Courses.html#life-skills" class="course-link">Life Skills</a></li>
+      <li><a href="detailed Courses.html#sewing" class="course-link">Sewing</a></li>
+    </ul>
+  </li>
+</ul>
+    </li>
+      <li><a href="getqoute.html">Get Quote</a></li>
+      <li><a href="about us.html">About Us</a></li>
+      <li><a href="contact us.html">Contact Us</a></li>
+    </ul>
+    <div class="profile-icon" id="profileIcon" onclick="openNav()">
+    <img src="Media1/Yenzi.jpg" alt="Profile">
+</div>
+  </nav>
+  
+
+<div id="sideNav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="dashboard.html">Dashboard</a>
+  <a href="Profile.html">My Profile</a>
+  <a href="faq.html">FAQ</a>
+  <button id="theme-toggle" class="theme-btn">🌙</button>
+  <a href="#" onclick="logout()">Logout</a>
+</div>
+
+<div id="authModal" class="modal">
+  </div>
+
+  <header class="page-header">
+    <!-- Elfsight Website Translator | Untitled Website Translator -->
+<div class="elfsight-app-f32428f6-4c66-4d7c-868b-712a71a4a998" data-elfsight-app-lazy></div>
+    <h1>Our Courses</h1>
+    <p>Explore our practical skills programmes designed for real-world success.</p>
+  </header>
+
+  <main class="container">
+    <div class="section-title-wrapper">
+        <h2 class="section-title">6 Month Programmes</h2>
+    </div>
+    <div class="course-list">
+      <div class="course-card" id="firstaid">
+        <img src="Media1/first-aid-training-course-instructor.png" alt="First Aid">
+        <div class="course-card-content">
+            <h2>First Aid</h2>
+            <div class="duration">⏰ 6 Months</div>
+           
+            <a href="#" class="btn-course" onclick="openModal('firstaid')">View Course Details</a>
+        </div>
+      </div>
+      <div class="course-card" id="lifeskills">
+        <img src="Media1/lifeskills.jpg" alt="Life Skills">
+        <div class="course-card-content">
+            <h2>Life Skills</h2>
+            <div class="duration">⏰ 6 Months</div>
+            <a href="#" class="btn-course" onclick="openModal('lifeskills')">View Course Details</a>
+        </div>
+      </div>
+      <div class="course-card" id="sewing">
+        <img src="Media1/sewingimage.webp" alt="Sewing">
+        <div class="course-card-content">
+            <h2>Sewing</h2>
+            <div class="duration">⏰ 6 Months</div>
+            <a href="#" class="btn-course" onclick="openModal('sewing')">View Course Details</a>
+        </div>
+      </div>
+      <div class="course-card" id="landscaping">
+        <img src="Media1/R.jpeg" alt="Landscaping">
+        <div class="course-card-content">
+            <h2>Landscaping</h2>
+            <div class="duration">⏰ 6 Months</div>
+            <a href="#" class="btn-course" onclick="openModal('landscaping')">View Course Details</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title-wrapper">
+        <h2 class="section-title">6 Week Programmes</h2>
+    </div>
+    <div class="course-list">
+      <div class="course-card" id="childminding">
+        <img src="Media1/childminding.png" alt="Child Minding">
+        <div class="course-card-content">
+            <h2>Child Minding</h2>
+            <div class="duration">⏰ 6 Weeks</div>
+            <a href="#" class="btn-course" onclick="openModal('childminding')">View Course Details</a>
+        </div>
+      </div>
+      <div class="course-card" id="gardening">
+        <img src="Media1/gardening-skills.png" alt="Gardening">
+        <div class="course-card-content">
+            <h2>Garden Maintenance</h2>
+            <div class="duration">⏰ 6 Weeks</div>
+            <a href="#" class="btn-course" onclick="openModal('gardening')">View Course Details</a>
+        </div>
+      </div>
+      <div class="course-card" id="cooking">
+        <img src="Media1/ck.png" alt="Cooking">
+        <div class="course-card-content">
+            <h2>Cooking</h2>
+            <div class="duration">⏰ 6 Weeks</div>
+            <a href="#" class="btn-course" onclick="openModal('cooking')">View Course Details</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+ 
+ <div id="courseModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img src="Media1/Emplogo.png" alt="Logo" class="logo">
+      <h2 id="modalTitle">Course Title</h2>
+      <img src="" alt="Course Image" class="course-img" id="modalImg">
+      <p id="modalDesc">Course details will appear here...</p>
+      <h3>What You'll Learn</h3>
+      <ul id="modalLearn"></ul>
+      <div class="price" id="modalPrice">Price: R0</div>
+      <a href="getqoute.html" class="btn-enroll">Enroll Now</a>
+    </div>
+  </div>
+
+  <button id="chatbotBtn">💬</button>
+  <div id="chatbotModal" class="modal-chat">
+    <div class="modal-content-chat">
+      <div class="chat-header">
+        Empowering The Nation Bot
+        <span id="closeModalBtn">&times;</span>
+      </div>
+      <div id="chat-window"><div id="chat-log"></div></div>
+      <div id="chat-input">
+        <input type="text" id="user-input" placeholder="Type a message...">
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <span><strong>Empowering The Nation</strong></span>           
+      <div class="bottom-nav">
+        <a href="home.html">Home</a>
+        <a href="Courses.html">Courses</a>
+        <a href="getqoute.html">Get Quote</a>
+        <a href="about us.html">About Us</a>
+        <a href="contact us.html">Contact Us</a>
+        <a href="faq.html">FAQ</a>
+      </div>      
+      <div class="socials">
+        <a href="https://www.facebook.com/profile.php?id=61580403430808"><img src="Media1/facebook-icon.png" alt="Facebook"></a>
+        <a href="https://www.instagram.com/empow.eringthenation?igsh=ZDRmMzRrdDMwNnV6&utm_source=qr"><img src="Media1/Insta-icon.png" alt="Instagram"></a>
+        <a href="https://www.linkedin.com/in/empowering-the-nation-1521bb384/"><img src="Media1/linkedin-icon.png" alt="LinkedIn"></a>
+        <a href="https://www.tiktok.com/@empowering.the.na5?_t=ZM-8zd8EptIa2i&_r=1"><img src="Media1/tiktok-icon.png" alt="TikTok"></a>
+    </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2022 Empowering The Nation. All rights reserved.</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookies Settings</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="java/coursesscript.js"></script>
+  <script src="https://elfsightcdn.com/platform.js" async></script>
+  <script>
+    
+// ===== Signup & Login Logic =====
+function signup(e) {
+  e.preventDefault();
+  const username = document.getElementById("username").value.trim();
+  if (username) {
+    localStorage.setItem("username", username);
+    checkLoginStatus();
+    closeModal();
+    alert("Welcome, " + username + "!");
+  }
+}
+function login(e) {
+  e.preventDefault();
+  const username = document.getElementById("loginUsername").value.trim();
+  if (username) {
+    localStorage.setItem("username", username);
+    checkLoginStatus();
+    closeModal();
+    alert("Welcome back, " + username + "!");
+  }
+}
+function logout() {
+  localStorage.removeItem("username");
+  checkLoginStatus();
+  closeNav();
+  alert("You have been logged out.");
+}
+
+function checkLoginStatus() {
+  const profileIcon = document.getElementById("profileIcon");
+  const primaryButton = document.querySelector(".hero-buttons .btn-primary");
+
+  if (localStorage.getItem("username")) {
+    if (profileIcon) profileIcon.style.display = "block";
+    if (primaryButton) primaryButton.style.display = "none";
+  } else {
+    if (profileIcon) profileIcon.style.display = "none";
+    if (primaryButton) primaryButton.style.display = "inline-block";
+  }
+}
+
+// ===== Side Navigation =====
+function openNav() {
+  const sideNav = document.getElementById("sideNav");
+  if (sideNav) sideNav.style.width = "250px";
+}
+function closeNav() {
+  const sideNav = document.getElementById("sideNav");
+  if (sideNav) sideNav.style.width = "0";
+}
+
+// theme
+const themeToggleButton = document.getElementById('theme-toggle');
+const currentTheme = localStorage.getItem('theme');
+
+// On page load, apply the saved theme
+if (currentTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    themeToggleButton.textContent = '☀️'; // Sun icon for dark mode
+}
+
+// Add click listener to the button
+themeToggleButton.addEventListener('click', () => {
+    // Toggle the .dark-mode class on the body
+    document.body.classList.toggle('dark-mode');
+
+    let theme = 'light';
+    // If dark mode is now active...
+    if (document.body.classList.contains('dark-mode')) {
+        theme = 'dark';
+        themeToggleButton.textContent = '☀️'; // Change icon to sun
+    } else {
+        themeToggleButton.textContent = '🌙'; // Change icon to moon
+    }
+    // Save the user's preference to localStorage
+    localStorage.setItem('theme', theme);
+});
+window.addEventListener('storage', function(event) {
+  if (event.key === 'username') {
+    checkLoginStatus(); // Update the UI on this page
+    applyTheme();
+  }
+});
+  </script>
+</body>
+</html>

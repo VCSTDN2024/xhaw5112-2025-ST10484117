@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Empowering the Nation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="css/aboutstyle.css">
+</head>
+<body>
+  <nav>
+    <div class="brand">
+      <img src="Media1/Emplogo.png" alt="Empowering the Nation Logo">
+      <span>Empowering The Nation</span>
+    </div>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li class="dropdown">
+      <a href="Courses.html">Courses</a>
+      <ul class="dropdown-content">
+  <li class="sub-dropdown">
+    <a href="#">6 Weeks ▸</a>
+    <ul class="sub-dropdown-content">
+      <li><a href="detailed Courses.html#childminding" class="course-link">Childminding</a></li>
+      <li><a href="detailed Courses.html#cooking" class="course-link">Cooking</a></li>
+      <li><a href="detailed Courses.html#garden-maintenance" class="course-link">Garden Maintenance</a></li>
+    </ul>
+  </li>
+  <li class="sub-dropdown">
+    <a href="#">6 Months ▸</a>
+    <ul class="sub-dropdown-content">
+      <li><a href="detailed Courses.html#landscaping" class="course-link">Landscaping</a></li>
+      <li><a href="detailed Courses.html#first-aid" class="course-link">First Aid</a></li>
+      <li><a href="detailed Courses.html#life-skills" class="course-link">Life Skills</a></li>
+      <li><a href="detailed Courses.html#sewing" class="course-link">Sewing</a></li>
+    </ul>
+  </li>
+</ul>
+    </li>
+      <li><a href="getqoute.html">Get Quote</a></li>
+      <li><a href="about us.html">About Us</a></li>
+      <li><a href="contact us.html">Contact Us</a></li>
+    </ul>
+    <div class="profile-icon" id="profileIcon" onclick="openNav()">
+    <img src="Media1/Yenzi.jpg" alt="Profile">
+</div>
+  </nav>
+  
+
+<div id="sideNav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="dashboard.html">Dashboard</a>
+  <a href="Profile.html">My Profile</a>
+  <a href="faq.html">FAQ</a>
+  <button id="theme-toggle" class="theme-btn">🌙</button>
+  <a href="#" onclick="logout()">Logout</a>
+</div>
+
+<div id="authModal" class="modal">
+  </div>
+
+  <main>
+    <!-- Elfsight Website Translator | Untitled Website Translator -->
+<div class="elfsight-app-f32428f6-4c66-4d7c-868b-712a71a4a998" data-elfsight-app-lazy></div>
+    <section class="container our-story">
+      
+      <div class="our-story-text">
+        <p class="sub-heading">OUR STORY</p>
+        <h1>Knowledge is the Key to Opportunity</h1>
+        <p>
+          Founded in 2022 by Precious Radebe, Empowering The Nation began with a simple belief: knowledge creates opportunity. We empower domestic workers, gardeners, and members of our community with practical skills that improve employability and open doors to entrepreneurship.
+        </p>
+        <p>
+          We design our courses with the realities of our learners in mind—offering short, affordable, and practical pathways into paid work or self-employment.
+        </p>
+      </div>
+      <div class="our-story-image">
+        <img src="Media1/Empowering people.webp" alt="Founder Precious Radebe">
+      </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Learners Say</h2>
+            <div class="testimonial-cards">
+            <div class="testimonial">
+                <p>"The cooking course gave me the confidence to start a small catering business. I am now earning extra income for my family."</p>
+                <h4>– Thandi, Cooking Course Graduate</h4>
+            </div>
+            <div class="testimonial">
+                <p>"I learnt so much in the landscaping course. Now I manage gardens in my neighbourhood, and I’m proud of my new career."</p>
+                <h4>– Sipho, Landscaping Course Graduate</h4>
+            </div>
+            <div class="testimonial">
+                <p>"The life skills programme helped me grow personally and professionally. I can communicate better and feel more confident."</p>
+                <h4>– Lerato, Life Skills Graduate</h4>
+            </div>
+            </div>
+        </div>
+    </section>
+  </main>
+
+
+  <button id="chatbotBtn">💬</button>
+  <div id="chatbotModal" class="modal-chat">
+    <div class="modal-content-chat">
+      <div class="chat-header">
+        Empowering The Nation Bot
+        <span id="closeModal">&times;</span>
+      </div>
+      <div id="chat-window"><div id="chat-log"></div></div>
+      <div id="chat-input">
+        <input type="text" id="user-input" placeholder="Type a message...">
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="app-section">
+  <div class="app-container">
+    <div class="app-text">
+      <h2>FIND OUR APP<br>IN THESE STORES</h2>
+
+      <div class="store-buttons">
+        <a href="https://play.google.com/store/apps/details?id=yourapp" target="_blank" class="store-btn">
+          <img src="Media1/icons8-playstore-48.png" alt="Google Play"> Get it on Google Play
+        </a>
+        <a href="https://apps.apple.com/app/yourapp" target="_blank" class="store-btn">
+          <img src="Media1/icons8-app-store-48.png" alt="App Store"> Download on the App Store
+        </a>
+      </div>
+    </div>
+
+    <div class="app-preview">
+      <img src="Media1/Group 7 (2).png" alt="App Preview" class="app-phone">
+      <img src="Media1/barcode (1).gif" alt="QR Code" class="qr-code">
+    </div>
+  </div>
+</section>
+     
+  <footer class="footer">
+    <div class="footer-top">
+      <span><strong>Empowering The Nation</strong></span>          
+      <div class="bottom-nav">
+        <a href="home.html">Home</a>
+        <a href="Courses.html">Courses</a>
+        <a href="getquote.html">Apply</a>
+        <a href="about us.html">About Us</a>
+        <a href="contact us.html">Contact Us</a>
+        <a href="faq.html">FAQ</a>
+      </div>      
+      <div class="socials">
+        <a href="https://www.facebook.com/profile.php?id=61580403430808"><img src="Media1/facebook-icon.png" alt="Facebook"></a>
+        <a href="https://www.instagram.com/empow.eringthenation?igsh=ZDRmMzRrdDMwNnV6&utm_source=qr"><img src="Media1/Insta-icon.png" alt="Instagram"></a>
+        <a href="https://www.linkedin.com/in/empowering-the-nation-1521bb384/"><img src="Media1/linkedin-icon.png" alt="LinkedIn"></a>
+        <a href="https://www.tiktok.com/@empowering.the.na5?_t=ZM-8zd8EptIa2i&_r=1"><img src="Media1/tiktok-icon.png" alt="TikTok"></a>
+    </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2022 Empowering The Nation. All rights reserved.</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookies Settings</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="java/aboutscript.js"></script>
+  <script src="java/Signupscript.js"></script>
+  <!-- Elfsight Website Translator | Untitled Website Translator -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+</body>
+</html>

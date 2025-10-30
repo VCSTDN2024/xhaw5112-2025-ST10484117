@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Empowering The Nation - Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/homestyle.css"
+</head>
+<body>
+
+<nav>
+  <div class="brand">
+    <img src="Media1/Emplogo.png" alt="Empowering the nation logo">
+    <span>Empowering The Nation</span>
+  </div>
+  <ul>
+    <li><a href="home.html">Home</a></li>
+    <li class="dropdown">
+      <a href="Courses.html">Courses</a>
+      <ul class="dropdown-content">
+  <li class="sub-dropdown">
+    <a href="#">6 Weeks ▸</a>
+    <ul class="sub-dropdown-content">
+      <li><a href="detailed Courses.html#childminding" class="course-link">Childminding</a></li>
+      <li><a href="detailed Courses.html#cooking" class="course-link">Cooking</a></li>
+      <li><a href="detailed Courses.html#garden-maintenance" class="course-link">Garden Maintenance</a></li>
+    </ul>
+  </li>
+  <li class="sub-dropdown">
+    <a href="#">6 Months ▸</a>
+    <ul class="sub-dropdown-content">
+      <li><a href="detailed Courses.html#landscaping" class="course-link">Landscaping</a></li>
+      <li><a href="detailed Courses.html#first-aid" class="course-link">First Aid</a></li>
+      <li><a href="detailed Courses.html#life-skills" class="course-link">Life Skills</a></li>
+      <li><a href="detailed Courses.html#sewing" class="course-link">Sewing</a></li>
+    </ul>
+  </li>
+</ul>
+    </li>
+    <li><a href="getquote.html">Get Quote</a></li>
+    <li><a href="about us.html">About Us</a></li>
+    <li><a href="contact us.html">Contact Us</a></li>
+  </ul>
+  <div class="profile-icon" id="profileIcon" onclick="openNav()">
+    <img src="Media1/Yenzi.jpg" alt="Profile">
+  </div>
+</nav>
+
+
+<div id="sideNav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="dashboard.html">Dashboard</a>
+  <a href="Profile.html">My Profile</a>
+  <a href="faq.html">FAQ</a>
+  <button id="theme-toggle" class="theme-btn">🌙</button>
+  <a href="#" onclick="logout()">Logout</a>
+</div>
+
+<main>
+
+    <section class="hero">
+      <div class="hero-text">
+          <!-- Elfsight Website Translator | Untitled Website Translator -->
+        <div class="elfsight-app-f32428f6-4c66-4d7c-868b-712a71a4a998" data-elfsight-app-lazy></div>
+        <h1>Empowering Skills, Changing Lives</h1>
+        <p>Expand your knowledge with courses designed to empower your future. We provide practical training programmes that help domestic workers and gardeners gain valuable skills.</p>
+        <div class="hero-buttons">
+          <a href="Courses.html" class="btn-light">Discover Courses</a>
+          <button class="btn-primary" onclick="openModal()">Sign Up / Login</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="courses container">
+      <h2>Featured Courses</h2>
+      <p>Choose from a variety of programs designed for every stage of learning.Courses from 6 weeks to 6 Months</p>
+      <div class="course-cards">
+        <div class="course-card">
+          <img src="Media1/sewingimage.webp" alt="A person sewing">
+          <h3>Sewing</h3>
+          <p>Learn how to create, mend, and design garments with professional sewing techniques.</p>
+        </div>
+        <div class="course-card">
+          <img src="Media1/first-aid-training-course-instructor.png" alt="First aid training session">
+          <h3>First Aid</h3>
+          <p>Learn lifesaving techniques, CPR, and emergency response skills to handle accidents.</p>
+        </div>
+        <div class="course-card">
+          <img src="Media1/ck.png" alt="A chef cooking in a kitchen">
+          <h3>Cooking</h3>
+          <p>Learn practical cooking techniques, nutrition, and how to prepare affordable family meals.</p>
+        </div>
+      </div>
+      <a href="Courses.html" class="view-more-btn">View All Courses</a>
+    </section>
+
+    <section class="campus">
+        <div class="container">
+            <h2>Our Local Campuses</h2>
+            <p>We have learning centers around Johannesburg for your convenience.</p>
+            <div class="campus-cards">
+                <div class="campus-card"><img src="Media1/campus1.jpg" alt="Park Town Campus"><h3>Central Johannesburg</h3></div>
+                <div class="campus-card"><img src="Media1/campus2.jpg" alt="Benmore Campus"><h3>Auckland park</h3></div>
+                <div class="campus-card"><img src="Media1/campus3.webp" alt="Johannesburg Campus"><h3>Brammfontein</h3></div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="authModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-left">
+      <div id="signupForm">
+        <h2>Create Account</h2>
+        <form onsubmit="signup(event)">
+          <input type="text" id="username" placeholder="Username" required>
+          <input type="email" id="email" placeholder="Email" required>
+          <input type="password" id="password" placeholder="Password" required>
+          <button type="submit">Sign Up</button>
+        </form>
+        <span class="toggle-link" onclick="showForm('login')">Already have an account? Login</span>
+      </div>
+      <div id="loginForm" style="display:none;">
+        <h2>Log In</h2>
+        <form onsubmit="login(event)">
+          <input type="text" id="loginUsername" placeholder="Username" required>
+          <input type="password" id="loginPassword" placeholder="Password" required>
+          <button type="submit">Log In</button>
+        </form>
+        <span class="toggle-link" onclick="showForm('signup')">Don't have an account? Sign Up</span>
+      </div>
+    </div>
+    <div class="modal-right">
+      <img src="Media1/Empowering people.webp" alt="Empowering Image" class="bg">
+      <img src="Media1/Emplogo.png" alt="Logo" class="top">
+    </div>
+  </div>
+</div>
+
+<button id="chatbotBtn">💬</button>
+<div id="chatbotModal" class="modal-chat">
+  <div class="modal-content-chat">
+    <div class="chat-header">
+      Empowering The Nation Bot
+      <span id="closeModal">&times;</span>
+    </div>
+    <div id="chat-window"><div id="chat-log"></div></div>
+    <div id="chat-input">
+      <input type="text" id="user-input" placeholder="Type a message...">
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+</div>
+
+<section class="app-section">
+  <div class="app-container">
+    <div class="app-text">
+      <h2>FIND OUR APP<br>IN THESE STORES</h2>
+
+      <div class="store-buttons">
+        <a href="https://play.google.com/store/apps/details?id=yourapp" target="_blank" class="store-btn">
+          <img src="Media1/icons8-playstore-48.png" alt="Google Play"> Get it on Google Play
+        </a>
+        <a href="https://apps.apple.com/app/yourapp" target="_blank" class="store-btn">
+          <img src="Media1/icons8-app-store-48.png" alt="App Store"> Download on the App Store
+        </a>
+      </div>
+    </div>
+
+    <div class="app-preview">
+      <img src="Media1/Group 7 (2).png" alt="App Preview" class="app-phone">
+      <img src="Media1/barcode (1).gif" alt="QR Code" class="qr-code">
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="footer-top">
+    <span><strong>Empowering The Nation</strong></span>
+    <div class="bottom-nav">
+      <a href="home.html">Home</a>
+      <a href="Courses.html">Courses</a>
+      <a href="getqoute.html">Get Quote</a>
+      <a href="about us.html">About Us</a>
+      <a href="contact us.html">Contact Us</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <div class="socials">
+        <a href="https://www.facebook.com/profile.php?id=61580403430808"><img src="Media1/facebook-icon.png" alt="Facebook"></a>
+        <a href="https://www.instagram.com/empow.eringthenation?igsh=ZDRmMzRrdDMwNnV6&utm_source=qr"><img src="Media1/Insta-icon.png" alt="Instagram"></a>
+        <a href="https://www.linkedin.com/in/empowering-the-nation-1521bb384/"><img src="Media1/linkedin-icon.png" alt="LinkedIn"></a>
+        <a href="https://www.tiktok.com/@empowering.the.na5?_t=ZM-8zd8EptIa2i&_r=1"><img src="Media1/tiktok-icon.png" alt="TikTok"></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2022 Empowering The Nation. All rights reserved.</span>
+    <div>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookies Settings</a>
+    </div>
+  </div>
+</footer>
+
+<script src="java/homescript.js"></script>
+<script src="java/Signupscript.js"></script>
+<script src="https://elfsightcdn.com/platform.js" async></script>
+</body>
+</html>

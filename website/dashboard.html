@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard | Empowering The Nation</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboardstyle.css">
+</head>
+<body>
+
+    <nav>
+        <div class="brand">
+            <img src="Media1/Emplogo.png" alt="Empowering the nation logo">
+            <span>Empowering The Nation</span>
+        </div>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="Courses.html">Courses</a></li>
+            <li><a href="getquote.html">Get Quote</a></li>
+            <li><a href="about us.html">About Us</a></li>
+            <li><a href="contact us.html">Contact Us</a></li>
+        </ul>
+        <div class="profile-menu">
+            <div class="profile-icon" id="profileIcon">
+                <img src="Media1/Yenzi.jpg" alt="Profile Icon">
+            </div>
+            <div class="dropdown-menu" id="profileDropdown">
+                <a href="Profile.html">View Profile</a>
+                <a href="faq.html">FAQ</a>
+                <a href="login.html" onclick="logout()">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        
+        <div class="sidebar">
+            
+            <div class="card" id="welcome-card">
+                <h2>👋 Welcome Back!</h2>
+                <p>Hello, <strong id="userName">Student</strong>! Your next class starts soon. Keep up the great work!</p>
+            </div>
+            
+            <div class="card calendar-container">
+                <h2>🗓️ Calendar & Events</h2>
+                <div class="calendar-header">
+                    <button id="prev">Previous</button>
+                    <span id="month-year"></span>
+                    <button id="next">Next</button>
+                </div>
+                <div id="calendar">
+                    </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            
+            <div class="card progress-container">
+                <h2>📊 My Courses Progress</h2>
+                </div>
+            
+            <div class="card announcements-card">
+                <h2>📢 Announcements</h2>
+                <div class="announcement-list">
+                    <div class="announcement-item">
+                        <h4>Mandatory First Aid Refresher</h4>
+                        <p>All students enrolled in 6-month courses must attend a 2-hour refresher on <strong>Oct 15th</strong>. Check the calendar for details.</p>
+                    </div>
+                     <div class="announcement-item">
+                        <h4>New Digital Certificate System</h4>
+                        <p>Completed courses will now issue certificates digitally within 48 hours of final assessment. Check your email!</p>
+                    </div>
+                     <div class="announcement-item">
+                        <h4>Holiday Closure Notice</h4>
+                        <p>Our training centers will be closed from Dec 24th to Jan 2nd.</p>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // --- CALENDAR DATA (Schedule Events) ---
+        const events = [
+            { date: new Date().getDate() + 1, month: new Date().getMonth(), title: "Cooking Class 3" },
+            { date: 15, month: new Date().getMonth(), title: "First Aid Exam" },
+            { date: 28, month: new Date().getMonth(), title: "Project Deadline" },
+            { date: 5, month: new Date().getMonth() + 1, title: "Next Month Workshop" }
+        ];
+
+        let currentDate = new Date();
+        const calendar = document.getElementById("calendar");
+        const monthYearDisplay = document.getElementById("month-year");
+        const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+        // --- CALENDAR LOGIC ---
+        function renderCalendar(date) {
+            calendar.innerHTML = '';
+            
+            // Render Day Names
+            dayNames.forEach(day => {
+                const dayNameEl = document.createElement("div");
+                dayNameEl.classList.add("day-name");
+                dayNameEl.textContent = day;
+                calendar.appendChild(dayNameEl);
+            });
+
+            const year = date.getFullYear();
+            const month = date.getMonth();
+            
+            monthYearDisplay.textContent = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
+            const firstDayOfMonth = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const todayDate = new Date().getDate();
+            const currentMonth = new Date().getMonth();
+            const currentYear = new Date().getFullYear();
+
+
+            // Empty cells for padding
+            for (let i = 0; i < firstDayOfMonth; i++) {
+                const emptyCell = document.createElement("div");
+                emptyCell.classList.add("day-cell", "empty");
+                calendar.appendChild(emptyCell);
+            }
+
+            // Day cells
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayCell = document.createElement("div");
+                dayCell.classList.add("day-cell");
+                dayCell.textContent = day;
+
+                // Check for today's date
+                if (day === todayDate && month === currentMonth && year === currentYear) {
+                    dayCell.classList.add("today");
+                }
+                
+                // Check for events
+                const dayEvents = events.filter(e => e.date === day && e.month === month);
+                if (dayEvents.length > 0) {
+                    dayCell.classList.add("event-day");
+                    
+                    // Simple event indicator dot
+                    const eventIndicator = document.createElement("div");
+                    eventIndicator.classList.add("event");
+                    dayCell.appendChild(eventIndicator);
+
+                    // Add click handler to show event details (Interactive)
+                    dayCell.addEventListener('click', () => {
+                        const eventTitles = dayEvents.map(e => e.title).join('\n- ');
+                        alert(`Events on ${day}: \n- ${eventTitles}`);
+                    });
+                }
+
+                calendar.appendChild(dayCell);
+            }
+        }
+
+        document.getElementById("prev").addEventListener("click", () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar(currentDate);
+        });
+        document.getElementById("next").addEventListener("click", () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar(currentDate);
+        });
+
+        // --- DASHBOARD DATA & PROGRESS LOGIC ---
+        window.addEventListener("DOMContentLoaded", () => {
+            // Placeholder: Fetching user name (e.g., from localStorage or a server)
+            const storedUserName = localStorage.getItem("name") || "Student";
+            document.getElementById("userName").textContent = storedUserName;
+            
+            // Initialize Calendar
+            renderCalendar(currentDate);n
+
+            // Fetch course data (using placeholder data for demonstration)
+            const purchasedCourses = JSON.parse(localStorage.getItem("purchasedCourses")) || [
+                { name: "Childminding", progress: 85, duration: "6 Weeks" },
+                { name: "Landscaping", progress: 40, duration: "6 Months" },
+                { name: "First Aid", progress: 10, duration: "6 Months" },
+            ];
+
+            const progressContainer = document.querySelector(".progress-container");
+            // Clear the static H2 tag to prevent duplication
+            progressContainer.innerHTML = '<h2>📊 My Courses Progress</h2>'; 
+
+            purchasedCourses.forEach(c => {
+                const item = document.createElement("div");
+                item.classList.add("course-progress-item");
+                
+                const courseName = document.createElement("p");
+                courseName.textContent = `${c.name} (${c.duration}) - ${c.progress}% Complete`;
+
+                const progressBar = document.createElement("div");
+                progressBar.classList.add("progress-bar");
+
+                const progressFill = document.createElement("div");
+                progressFill.classList.add("progress-fill");
+                progressFill.style.width = c.progress + "%";
+                progressFill.textContent = c.progress + "%";
+
+                // Dynamic color based on progress (Interactive Feedback)
+                if (c.progress >= 75) {
+                    progressFill.classList.add("green");
+                } else if (c.progress >= 25) {
+                    progressFill.classList.add("yellow");
+                } else {
+                    progressFill.classList.add("red");
+                }
+
+                progressBar.appendChild(progressFill);
+                item.appendChild(courseName);
+                item.appendChild(progressBar);
+                
+                // Add click listener for interaction
+                item.addEventListener('click', () => {
+                    alert(`Navigating to study materials for: ${c.name}`);
+                    // In a real app, this would be: window.location.href = `course-details.html?id=${c.name}`;
+                });
+                
+                progressContainer.appendChild(item);
+            });
+        });
+        
+        // --- PROFILE DROPDOWN LOGIC ---
+        const profileIcon = document.getElementById('profileIcon');
+        const profileDropdown = document.getElementById('profileDropdown');
+
+        profileIcon.addEventListener('click', () => {
+            // Toggle the display property
+            if (profileDropdown.style.display === 'block') {
+                profileDropdown.style.display = 'none';
+            } else {
+                profileDropdown.style.display = 'block';
+            }
+        });
+
+        // Close the dropdown if the user clicks outside of it
+        document.addEventListener('click', (event) => {
+            if (!profileIcon.contains(event.target) && !profileDropdown.contains(event.target)) {
+                profileDropdown.style.display = 'none';
+            }
+        });
+
+        // Simple logout function
+        function logout() {
+            localStorage.clear(); // Clear local data on logout
+            // Redirect to login page
+            window.location.href = 'home.html'; 
+        }
+
+    </script>
+</body>
+</html>

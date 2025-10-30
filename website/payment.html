@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Payment | Empowering The Nation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/paymentstyle.css"
+</head>
+<body>
+  <nav>
+      <div class="brand">
+        <img src="Media1/Emplogo.png" alt="Empowering the nation">
+        <span>Empowering The Nation</span>
+      </div>
+      <ul>
+        <li><a href="home.html"target="_blank">Home</a></li>
+        <li class="dropdown">
+          <a href="Courses.html">Courses</a>
+          <ul class="dropdown-content">
+            <li class="sub-dropdown">
+              <a href="#">6 Weeks ▸</a>
+              <ul class="sub-dropdown-content">
+                <li><a href="detailed Courses.html#childminding" class="course-link">Childminding</a></li>
+                <li><a href="detailed Courses.html#cooking" class="course-link">Cooking</a></li>
+                <li><a href="detailed Courses.html#garden-maintenance" class="course-link">Garden Maintenance</a></li>
+              </ul>
+            </li>
+            <li class="sub-dropdown">
+              <a href="#">6 Months ▸</a>
+              <ul class="sub-dropdown-content">
+                <li><a href="detailed Courses.html#landscaping" class="course-link">Landscaping</a></li>
+                <li><a href="detailed Courses.html#first-aid" class="course-link">First Aid</a></li>
+                <li><a href="detailed Courses.html#life-skills" class="course-link">Life Skills</a></li>
+                <li><a href="detailed Courses.html#sewing" class="course-link">Sewing</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="getqoute.html"target="_blank">Get Quote</a></li>
+        <li><a href="about us.html"target="_blank">About Us</a></li>
+        <li><a href="contact us.html"target="_blank">Contact Us</a></li>
+      </ul>
+  </nav>
+
+  <main class="container">
+    <div class="card">
+      <h2>Order Summary</h2>
+      
+      <table id="courseTable">
+        <thead>
+          <tr>
+            <th>Course Name</th>
+            <th>Duration</th>
+            <th>Pricing (R)</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <div class="totals-container">
+        <p class="totals" id="subtotal">Subtotal: <strong>R0.00</strong></p>
+        <p class="totals discount" id="discount">Discount: 0% Applied (<strong>- R0.00</strong>)</p>
+        <p class="totals" id="vat">VAT (15%): <strong>R0.00</strong></p>
+        <p class="totals" id="total-amount">Total Payable: <strong>R0.00</strong></p>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn" onclick="alert('Simulated: Proceeding to secure payment portal.')">Pay Now</button>
+        <button class="btn btn-secondary" id="goDashboard">Go to Dashboard</button>
+      </div>
+    </div>
+  </main>
+
+  <button id="chatbotBtn">💬</button>
+  <div id="chatbotModal" class="modal-chat">
+    <div class="modal-content-chat">
+      <div class="chat-header">
+        Empowering The Nation Bot
+        <span id="closeChatModal">&times;</span>
+      </div>
+      <div id="chat-window"><div id="chat-log"></div></div>
+      <div id="chat-input">
+        <input type="text" id="user-input" placeholder="Type a message...">
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // -------------------
+    // Order Summary Logic
+    // -------------------
+     document.addEventListener("DOMContentLoaded", () => {
+      // Retrieve data from localStorage (set on the getqoute/checkout page)
+      const courseDetails = JSON.parse(localStorage.getItem("courseDetails")) || [];
+      const subtotal = localStorage.getItem("subtotal") || "0.00";
+      const discount = localStorage.getItem("discount") || "0.00";
+      const discountRate = localStorage.getItem("discountRate") || "0%";
+      const vat = localStorage.getItem("vat") || "0.00";
+      const total = localStorage.getItem("total") || "0.00";
+
+      const tableBody = document.querySelector("#courseTable tbody");
+      
+      // Populate the table rows
+      if (courseDetails.length === 0) {
+        let row = document.createElement("tr");
+        row.innerHTML = `<td colspan="3" style="text-align: center; color: var(--text-light-gray); padding: 20px;">No courses added to your order.</td>`;
+        tableBody.appendChild(row);
+      } else {
+        courseDetails.forEach(c => {
+          let row = document.createElement("tr");
+          row.innerHTML = `<td>${c.name}</td><td>${c.duration}</td><td>R${parseFloat(c.price).toFixed(2)}</td>`;
+          tableBody.appendChild(row);
+        });
+      }
+
+      // Populate the total summary details
+      document.getElementById("subtotal").innerHTML = `Subtotal: <strong>R${parseFloat(subtotal).toFixed(2)}</strong>`;
+      document.getElementById("discount").innerHTML = `Discount: ${discountRate} Applied (<strong>- R${parseFloat(discount).toFixed(2)}</strong>)`;
+      document.getElementById("vat").innerHTML = `VAT (15%): <strong>R${parseFloat(vat).toFixed(2)}</strong>`;
+      document.getElementById("total-amount").innerHTML = `Total Payable: <strong>R${parseFloat(total).toFixed(2)}</strong>`;
+    });
+    
+    // -------------------
+    // Dashboard Redirection Logic
+    // -------------------
+    document.getElementById("goDashboard").addEventListener("click", () => {
+      const courseDetails = JSON.parse(localStorage.getItem("courseDetails")) || [];
+
+      // Assign random initial progress for purchased courses
+      courseDetails.forEach(c => {
+        // Sets progress between 2% and 7%
+        c.progress = Math.floor(Math.random() * 6) + 2; 
+      });
+
+      // Save purchased courses + progress in localStorage for dashboard to read
+      localStorage.setItem("purchasedCourses", JSON.stringify(courseDetails));
+
+      // Redirect to dashboard
+      window.location.href = "dashboard.html";
+    });
+
+    // -------------------
+    // ChatBot Functions
+    // -------------------
+    document.getElementById("chatbotBtn").onclick = () => {
+        const modal = document.getElementById("chatbotModal");
+        if (modal.style.display !== "flex") {
+            modal.style.display = "flex";
+            if (!document.getElementById("chat-log").hasChildNodes()) {
+                addMessage("bot", "Hi 👋! How can I help you today?<br>Type 'faq' to see our help menu.");
+            }
+        }
+    };
+    document.getElementById("closeChatModal").onclick = () => { document.getElementById("chatbotModal").style.display = "none"; };
+    document.getElementById("send-btn").onclick = sendMessage;
+    document.getElementById("user-input").addEventListener("keypress", (e) => { if (e.key === "Enter") sendMessage(); });
+    
+    function sendMessage() {
+        const input = document.getElementById("user-input");
+        const message = input.value.trim();
+        if (!message) return;
+        addMessage("user", message);
+        input.value = "";
+        setTimeout(() => handleBotResponse(message.toLowerCase()), 500);
+    }
+    
+    function addMessage(sender, text) {
+        const log = document.getElementById("chat-log");
+        const div = document.createElement("div");
+        div.className = sender;
+        div.innerHTML = text;
+        log.appendChild(div);
+        log.scrollTop = log.scrollHeight;
+    }
+    
+    function handleBotResponse(userMessage) {
+        if (userMessage.includes("hi") || userMessage.includes("hello")) {
+            addMessage("bot", "Hello! 😊 How can I help you today? Type 'faq' to see the menu.");
+        } else if (userMessage.includes("faq")) {
+            addMessage("bot", `
+            Please select a category:<br>
+            <button class="faq-btn" onclick="showFAQ('locations')">📍 Locations</button>
+            <button class="faq-btn" onclick="showFAQ('payments')">💳 Payments</button>
+            <button class="faq-btn" onclick="showFAQ('contact')">📞 Contact</button>
+            <button class="faq-btn" onclick="showFAQ('courses')">📚 Courses</button>
+            `);
+        } else {
+            addMessage("bot", "Sorry, I didn’t quite get that. Try typing 'faq' for options.");
+        }
+    }
+    
+    function showFAQ(category) {
+        let faqs = {
+            locations: `<div class="accordion"><details open><summary>Where are your locations?</summary><p>We are in Johannesburg South, Soweto, Roodepoort, and Sandton.<br><a href='contact-us.html'>📍 View on map</a></p></details></div>`,
+            payments: `<div class="accordion"><details open><summary>How do I pay?</summary><p>You can pay online via EFT or card. <a href='getqoute.html'>💳 Go to payment page</a></p></details></div>`,
+            contact: `<div class="accordion"><details open><summary>How can I contact you?</summary><p>You can reach us via our <a href='contact-us.html'>Contact Page</a> or call 011-123-4567.</p></details></div>`,
+            courses: `<div class="accordion"><details open><summary>What courses do you offer?</summary><p>We offer First Aid, Sewing, Cooking, Landscaping, Child Minding, Life Skills, and Garden Maintenance.<br><a href='Courses.html'>📚 View all courses</a></p></details></div>`
+        };
+        addMessage("bot", faqs[category]);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Empowering the Nation</title>
+    <link rel="stylesheet" href="css/contactusstyle.css"
+</head>
+  
+<body>
+    <nav class="navbar">
+        <div class="brand">
+            <img src="Media1/Emplogo.png" alt="Empowering the nation">
+            <span>Empowering The Nation</span>
+        </div>
+        <ul class="navbar-links">
+            <li><a href="home.html">Home</a></li>
+            <li class="dropdown">
+                <a href="Courses.html">Courses</a>
+                <ul class="dropdown-content">
+                    <li class="sub-dropdown">
+                        <a href="#">6 Weeks ▸</a>
+                        <ul class="sub-dropdown-content">
+                            <li><a href="detailed Courses.html#childminding" class="course-link">Childminding</a></li>
+                            <li><a href="detailed Courses.html#cooking" class="course-link">Cooking</a></li>
+                            <li><a href="detailed Courses.html#garden-maintenance" class="course-link">Garden Maintenance</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-dropdown">
+                        <a href="#">6 Months ▸</a>
+                        <ul class="sub-dropdown-content">
+                            <li><a href="detailed Courses.html#landscaping" class="course-link">Landscaping</a></li>
+                            <li><a href="detailed Courses.html#first-aid" class="course-link">First Aid</a></li>
+                            <li><a href="detailed Courses.html#life-skills" class="course-link">Life Skills</a></li>
+                            <li><a href="detailed Courses.html#sewing" class="course-link">Sewing</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="getqoute.html">Apply</a></li>
+            <li><a href="about us.html">About Us</a></li>
+            <li><a href="contact us.html">Contact Us</a></li>
+            
+        </ul>
+        <div class="profile-icon" id="profileIcon" onclick="openNav()">
+    <img src="Media1/Yenzi.jpg" alt="Profile">
+</div>
+    </nav>
+
+
+<div id="sideNav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="dashboard.html">Dashboard</a>
+  <a href="Profile.html">My Profile</a>
+  <a href="faq.html">FAQ</a>
+  <button id="theme-toggle" class="theme-btn">🌙</button>
+  <a href="#" onclick="logout()">Logout</a>
+</div>
+
+<div id="authModal" class="modal">
+  </div>
+    <main class="container"> 
+        <section class="page-intro">
+            <h1 class="title">We're Here For You</h1>
+            <h5>Feel free to reach out to us!</h5>
+            <div class="contact-info">
+                <a href="tel:0117569345" class="contact-number-link"> 
+                    <h5 class="contact-number">011-756-9345</h5>
+                </a>
+            </div>
+            <a href="mailto:info@empoweringthenation.org" class="action-btn">
+                Get In Touch via Email
+            </a>
+        </section>
+
+        <section class="hours-section main-section-spacing">
+            <h2 class="section-title">Operating Hours</h2>
+            <p class="section-subtitle">We are available during the following times to assist you.</p>
+            <div class="hours-grid">
+                <details open class="hours-details interactive-detail">
+                    <summary>Weekday Hours</summary>
+                    <div class="hours-content">
+                        <dl>
+                            <dt>Customer Service</dt>
+                            <dd>Monday - Friday: 08:00 - 17:00</dd>
+                            <dt>Technical Support</dt>
+                            <dd>Monday - Friday: 08:00 - 17:00</dd>
+                            <dt>Billing Department</dt>
+                            <dd>Monday - Friday: 08:00 - 17:00</dd>
+                        </dl>
+                    </div>
+                </details>
+                <details class="hours-details interactive-detail">
+                    <summary>Weekend & Support Hours</summary>
+                    <div class="hours-content">
+                        <dl>
+                            <dt>Customer Service</dt>
+                            <dd>Saturday: 09:00 - 13:00<br><span class="closed">Sunday: Closed</span></dd>
+                            <dt>Technical Support</dt>
+                            <dd>Saturday: 10:00 - 14:00<br>Sunday: 10:00 - 14:00</dd>
+                            <dt>Billing Department</dt>
+                            <dd><span class="closed">Saturday & Sunday: Closed</span></dd>
+                        </dl>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="locations-section main-section-spacing">
+            <h2 class="section-title">Our Training Venues</h2>
+            <p class="section-subtitle">Find an Empowering The Nation center near you.</p>
+            <div class="map-grid">
+                <div class="location-card interactive-card">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d229309.37025270643!2d27.904549378124994!3d-26.100259951416927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950ea1742c8d13%3A0x87e4889ff846f15e!2sLibrary%20Gardens!5e0!3m2!1sen!2sza!4v1760163140854!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="address">📍 Corner of Market Street & Fraser Street (Library Gardens), Johannesburg, Gauteng</div>
+                </div>
+                <div class="location-card interactive-card">
+                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.4262306440187!2d27.99965807519804!3d-26.182809577089817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950b939eb70dad%3A0x2b04eb5c20d77c03!2sUniversity%20Rd%20%26%20Kingsway%20Ave%2C%20Auckland%20Park%2C%20Johannesburg%2C%202092!5e0!3m2!1sen!2sza!4v1760163213084!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="address">📍 Cnr Kingsway and University Road, Auckland Park, Johannesburg, 2006.</div>
+                </div>
+                <div class="location-card interactive-card">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.251352919213!2d28.02574847519829!3d-26.188500577086284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c0fb3a9cff7%3A0x1b322c95985f4b1d!2sPlanetarium%2C%201%20Jan%20Smuts%20Ave%2C%20Braamfontein%2C%20Johannesburg%2C%202017!5e0!3m2!1sen!2sza!4v1760163263049!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="address">📍 1 Jan Smuts Avenue, Braamfontein, Johannesburg, Gauteng, 2001.</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+     <button id="chatbotBtn">💬</button>
+  <div id="chatbotModal" class="modal-chat">
+    <div class="modal-content-chat">
+      <div class="chat-header">
+        Empowering The Nation Bot
+        <span id="closeChatModal">&times;</span>
+      </div>
+      <div id="chat-window"><div id="chat-log"></div></div>
+      <div id="chat-input">
+        <input type="text" id="user-input" placeholder="Type a message...">
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+  </div>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <span><strong>Empowering The Nation</strong></span>
+            <div class="bottom-nav">
+                <a href="home.html">Home</a>
+                <a href="Courses.html">Courses</a>
+                <a href="apply.html">Get Qoute</a>
+                <a href="about us.html">About Us</a>
+                <a href="contact us.html">Contact Us</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+            <div class="socials">
+        <a href="https://www.facebook.com/profile.php?id=61580403430808"><img src="Media1/facebook-icon.png" alt="Facebook"></a>
+        <a href="https://www.instagram.com/empow.eringthenation?igsh=ZDRmMzRrdDMwNnV6&utm_source=qr"><img src="Media1/Insta-icon.png" alt="Instagram"></a>
+        <a href="https://www.linkedin.com/in/empowering-the-nation-1521bb384/"><img src="Media1/linkedin-icon.png" alt="LinkedIn"></a>
+        <a href="https://www.tiktok.com/@empowering.the.na5?_t=ZM-8zd8EptIa2i&_r=1"><img src="Media1/tiktok-icon.png" alt="TikTok"></a>
+    </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2022 Empowering The Nation. All rights reserved.</span>
+            <div class="legal-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookies Settings</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="java/contactscript.js"></script>
+    <script src="java/Signupscript.js"></script>
+    
+</body>
+</html>

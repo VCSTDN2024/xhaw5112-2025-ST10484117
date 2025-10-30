@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quotation | Empowering the Nation</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/stylesheet.css">
+    
+</head>
+<body>
+
+  <div class="quotation" id="quotation">
+    <div class="letterhead">
+      <img src="Media1/Emplogo.png" alt="Empowering the Nation Logo">
+      <div>
+        <h1>Empowering the Nation</h1>
+        <p>123 Community Centre, Johannesburg, South Africa</p>
+        <p>Email: info@empoweringthenation.org | Tel: +27 12 345 6789</p>
+      </div>
+    </div>
+
+    <div class="client-details">
+      <p><strong>Client:</strong> <span id="clientName">________</span></p>
+      <p><strong>Phone:</strong> <span id="clientPhone">________</span></p>
+      <p><strong>Email:</strong> <span id="clientEmail">________</span></p>
+      <p><strong>Address:</strong> <span id="clientAddress">________</span></p>
+      <p><strong>Date:</strong> <span id="quotationDate"></span></p>
+      <p><strong>Quotation No:</strong> <span id="quotationNo">QTN-001</span></p>
+    </div>
+
+    <table id="quotationTable">
+      <thead>
+        <tr>
+          <th>Course</th>
+          <th>Duration</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody id="quotationBody">
+      </tbody>
+    </table>
+
+    <h3>Subtotal: R<span id="subtotal">0.00</span></h3>
+    <h3>Discount (<span id="discountRate">0%</span>): R<span id="discount">0.00</span></h3>
+    <h3>VAT (15%): R<span id="vat">0.00</span></h3>
+    <h2>Total: R<span id="total">0.00</span></h2>
+
+    <div class="signatures">
+      <div class="sign-box">
+        <p>__________________________</p>
+        <p>Client Signature</p>
+      </div>
+      <div class="sign-box">
+        <p>__________________________</p>
+        <p>For Empowering the Nation</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Thank you for choosing Empowering the Nation. We look forward to working with you!</p>
+    </div>
+  </div>
+
+  <button class="download-btn" onclick="downloadPDF()">Download Quotation</button>
+  
+  <button id="chatbotBtn">💬</button>
+  <div id="chatbotModal" class="modal-chat">
+    <div class="modal-content-chat">
+      <div class="chat-header">
+        Empowering The Nation Bot
+        <span id="closeModal">&times;</span>
+      </div>
+      <div id="chat-window"><div id="chat-log"></div></div>
+      <div id="chat-input">
+        <input type="text" id="user-input" placeholder="Type a message...">
+        <button id="send-btn">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+
+
+    // Load saved client data
+    const clientName = localStorage.getItem("name");
+    const clientPhone = localStorage.getItem("number");
+    const clientEmail = localStorage.getItem("email");
+    const clientAddress = localStorage.getItem("address");
+    const courseDetails = JSON.parse(localStorage.getItem("courseDetails")) || [];
+    const subtotal = localStorage.getItem("subtotal");
+    const discount = localStorage.getItem("discount");
+    const discountRate = localStorage.getItem("discountRate");
+    const vat = localStorage.getItem("vat");
+    const total = localStorage.getItem("total");
+
+    // Quotation Number Auto-Increment
+    let lastQuoteNo = localStorage.getItem("lastQuoteNo") || 0;
+    let newQuoteNo = parseInt(lastQuoteNo) + 1;
+    localStorage.setItem("lastQuoteNo", newQuoteNo);
+
+    // Format as QTN-001, QTN-002, ...
+    let formattedQuoteNo = "QTN-" + String(newQuoteNo).padStart(3, "0");
+
+    // Fill client details
+    document.getElementById("clientName").innerText = clientName || "________";
+    document.getElementById("clientPhone").innerText = clientPhone || "________";
+    document.getElementById("clientEmail").innerText = clientEmail || "________";
+    document.getElementById("clientAddress").innerText = clientAddress || "________";
+    document.getElementById("quotationDate").innerText = new Date().toLocaleDateString();
+    document.getElementById("quotationNo").innerText = formattedQuoteNo;
+
+
+    // Fill table with courses
+    const tbody = document.getElementById("quotationBody");
+    courseDetails.forEach(course => {
+      const row = `<tr>
+          <td>${course.name}</td>
+          <td>${course.duration}</td>
+          <td>R${course.price.toFixed(2)}</td>
+        </tr>`;
+      tbody.innerHTML += row;
+    });
+
+
+    // Fill totals
+    document.getElementById("subtotal").innerText = subtotal || "0.00";
+    document.getElementById("discount").innerText = discount || "0.00";
+    document.getElementById("discountRate").innerText = discountRate || "0%";
+    document.getElementById("vat").innerText = vat || "0.00";
+    document.getElementById("total").innerText = total || "0.00";
+
+
+    // PDF download function
+    // PDF download function - UPDATED
+function downloadPDF() {
+  const element = document.getElementById("quotation");
+  
+  // Define options for html2pdf to ensure proper rendering and scale
+  const pdfOptions = {
+    margin: 10,
+    filename: `Quotation-${formattedQuoteNo}.pdf`,
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { 
+      scale: 2, // Increase scale for better resolution and full content capture
+      logging: true, 
+      scrollY: 0, // Start capture from the top of the element
+      useCORS: true 
+    },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
+  
+  // Hide non-quotation elements before generating
+  document.getElementById("chatbotBtn").style.display = 'none';
+  document.querySelector('.download-btn').style.display = 'none';
+
+  // Generate the PDF
+  html2pdf().from(element).set(pdfOptions).save().then(() => {
+     // Show buttons again after download is complete
+     document.getElementById("chatbotBtn").style.display = 'block';
+     document.querySelector('.download-btn').style.display = 'block';
+  });
+}
+
+// Make downloadPDF globally accessible
+window.downloadPDF = downloadPDF;
+
+    // ChatBot Modal open/close and logic (unchanged)
+    document.getElementById("chatbotBtn").onclick = () => {
+      document.getElementById("chatbotModal").style.display = "flex";
+      addMessage("bot", "Hi 👋! How can I help you today?<br>Type 'faq' to see our help menu.");
+    };
+
+    document.getElementById("closeModal").onclick = () => {
+      document.getElementById("chatbotModal").style.display = "none";
+    };
+
+    document.getElementById("send-btn").onclick = sendMessage;
+    document.getElementById("user-input").addEventListener("keypress", (e) => {
+      if (e.key === "Enter") sendMessage();
+    });
+
+    function sendMessage() {
+      const input = document.getElementById("user-input");
+      const message = input.value.trim();
+      if (!message) return;
+      addMessage("user", message);
+      input.value = "";
+      setTimeout(() => handleBotResponse(message.toLowerCase()), 500);
+    }
+
+    function addMessage(sender, text) {
+      const log = document.getElementById("chat-log");
+      const div = document.createElement("div");
+      div.className = sender;
+      div.innerHTML = text;
+      log.appendChild(div);
+      log.scrollTop = log.scrollHeight;
+    }
+
+    function handleBotResponse(userMessage) {
+      if (userMessage.includes("hi") || userMessage.includes("hello")) {
+        addMessage("bot", "Hello! 😊 How can I help you today? Type 'faq' to see the menu.");
+      } else if (userMessage.includes("faq")) {
+        addMessage("bot", `
+          Please select a category:<br>
+          <button class="faq-btn" onclick="showFAQ('locations')">📍 Locations</button>
+          <button class="faq-btn" onclick="showFAQ('payments')">💳 Payments</button>
+          <button class="faq-btn" onclick="showFAQ('contact')">📞 Contact</button>
+          <button class="faq-btn" onclick="showFAQ('courses')">📚 Courses</button>
+        `);
+      } else {
+        addMessage("bot", "Sorry, I didn’t quite get that. Try typing 'faq'.");
+      }
+    }
+
+    // Note: showFAQ must be a global function for the buttons to work
+    window.showFAQ = function(category) {
+      let faqs = {
+        locations: `
+          <div class="accordion">
+            <details>
+              <summary>Where are your locations?</summary>
+              <p>We are in Johannesburg South, Soweto, Roodepoort, and Sandton.<br>
+              <a href='/contact'>📍 View on map</a></p>
+            </details>
+          </div>
+        `,
+        payments: `
+          <div class="accordion">
+            <details>
+              <summary>How do I pay?</summary>
+              <p>You can pay online via EFT or card. <a href='/payment'>💳 Go to payment page</a></p>
+            </details>
+          </div>
+        `,
+        contact: `
+          <div class="accordion">
+            <details>
+              <summary>How can I contact you?</summary>
+              <p>You can reach us via <a href='/contact'>Contact Page</a> or call 011-123-4567.</p>
+            </details>
+          </div>
+        `,
+        courses: `
+          <div class="accordion">
+            <details>
+              <summary>What courses do you offer?</summary>
+              <p>We offer First Aid, Sewing, Cooking, Landscaping, Child Minding, Life Skills, and Garden Maintenance.<br>
+              <a href='/courses'>📚 View all courses</a></p>
+            </details>
+          </div>
+        `
+      };
+      addMessage("bot", faqs[category]);
+    }
+    
+    // Make downloadPDF globally accessible
+    window.downloadPDF = downloadPDF;
+  </script>
+
+</body>
+</html>
